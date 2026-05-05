@@ -77,34 +77,34 @@ export default function DashboardPage({ transactions }: Props) {
     <div className="space-y-6">
       {/* Balance cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 text-center">
-          <div className="text-xs text-gray-400 uppercase tracking-wide mb-1">Баланс</div>
-          <div className={`text-2xl font-bold ${balance >= 0 ? "text-green-600" : "text-red-600"}`}>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm p-5 text-center">
+          <div className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-1">Баланс</div>
+          <div className={`text-2xl font-bold ${balance >= 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>
             {balance.toLocaleString("ru-RU")} ₽
           </div>
         </div>
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 text-center">
-          <div className="text-xs text-gray-400 uppercase tracking-wide mb-1">Доходы</div>
-          <div className="text-2xl font-bold text-green-600">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm p-5 text-center">
+          <div className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-1">Доходы</div>
+          <div className="text-2xl font-bold text-green-600 dark:text-green-400">
             +{totalIncome.toLocaleString("ru-RU")} ₽
           </div>
         </div>
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 text-center">
-          <div className="text-xs text-gray-400 uppercase tracking-wide mb-1">Расходы</div>
-          <div className="text-2xl font-bold text-red-600">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm p-5 text-center">
+          <div className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-1">Расходы</div>
+          <div className="text-2xl font-bold text-red-600 dark:text-red-400">
             −{totalExpense.toLocaleString("ru-RU")} ₽
           </div>
         </div>
       </div>
 
       {/* Pie chart */}
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm p-6">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-gray-800">Расходы по категориям</h2>
+          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100">Расходы по категориям</h2>
           <MonthPicker value={month} onChange={setMonth} />
         </div>
         {pieData.length === 0 ? (
-          <div className="text-gray-400 text-sm text-center py-8">Нет расходов за этот месяц</div>
+          <div className="text-gray-400 dark:text-gray-500 text-sm text-center py-8">Нет расходов за этот месяц</div>
         ) : (
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -129,13 +129,13 @@ export default function DashboardPage({ transactions }: Props) {
       </div>
 
       {/* Bar chart */}
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">Доходы vs Расходы (6 месяцев)</h2>
+      <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm p-6">
+        <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">Доходы vs Расходы (6 месяцев)</h2>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={barData}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
-            <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-            <YAxis tick={{ fontSize: 12 }} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+            <XAxis dataKey="name" tick={{ fontSize: 12 }} stroke="#9ca3af" />
+            <YAxis tick={{ fontSize: 12 }} stroke="#9ca3af" />
             <Tooltip formatter={(v) => `${Number(v).toLocaleString("ru-RU")} ₽`} />
             <Legend />
             <Bar dataKey="income" name="Доходы" fill="#22c55e" radius={[4, 4, 0, 0]} />

@@ -22,16 +22,16 @@ export default function MonthPicker({ value, onChange }: Props) {
     <div className="flex items-center justify-center gap-4">
       <button
         onClick={() => shift(-1)}
-        className="text-gray-400 hover:text-gray-600 transition-colors text-lg"
+        className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors text-lg"
       >
         ←
       </button>
-      <span className="text-sm font-medium text-gray-700 min-w-[140px] text-center">
+      <span className="text-sm font-medium text-gray-700 dark:text-gray-300 min-w-[140px] text-center">
         {MONTH_NAMES[month - 1]} {year}
       </span>
       <button
         onClick={() => shift(1)}
-        className="text-gray-400 hover:text-gray-600 transition-colors text-lg"
+        className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors text-lg"
       >
         →
       </button>
